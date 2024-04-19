@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Add countries</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    </head>
+    <body>
+        <h1>Add a new country</h1>
+        <form th:object="${country}" th:action="@{save}" action="#" method="post">
+            <label for="country">Country</label>
+            <input type="text" th:field="*{country}" />
+            <div style="clear: both; display: block; height: 10px;"></div>
+            <label for="fastestRoute">Fastest route</label>
+            <input type="text" th:field="*{fastestRoute}" />
+            <div style="clear: both; display: block; height: 10px;"></div>
+            <label for="priceForFastest">Price for the fastest</label>
+            <input type="text" th:field="*{priceForFastest}" />
+            <div style="clear: both; display: block; height: 10px;"></div>
+            <label for="cheapestRoute">Cheapest route</label>
+            <input type="text" th:field="*{priceForCheapest}" />
+            <div style="clear: both; display: block; height: 10px;"></div>
+            <label for="airlines">Airlines operating the route</label>
+            <select id="airlines" th:field="*{airline}" class="form-control">
+                <option th:each="airlines: ${airlines}"
+                th:value="${airlines.airlineid}"
+                th:text="${airlines.airlineName}"></option></select>
+            <div style="clear: both; display: block; height: 10px;"></div>
+            <input type="submit" value="Save"></input>
+        </form>
+    </body>
+</html>

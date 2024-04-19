@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+xmlns:th="http://www.thymeleaf.org">
+<head>
+        <title>Add airlines</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    </head>
+    <body>
+        <h1>Add a new airline</h1>
+        <form th:object="${airlines}" th:action="@{saveairline}" action="#" method="post">
+            <label for="airlineid">Id</label>
+            <input type="text" th:field="*{airlineid}" />
+            <div style="clear: both; display: block; height: 10px;"></div>
+            <label for="airlineName">Airline</label>
+            <input type="text" th:field="*{airlineName}" />
+            <div style="clear: both; display: block; height: 10px;"></div>
+            <input type="submit" value="Save"></input>
+        </form>
+    </body>
+</html>

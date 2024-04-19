@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+<title>Travel plans</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+    <h1>Let's travel <span sec:authentication="name"></span>!</h1>
+    <h1>Countries and routes</h1>
+    <table>
+        <tbody>
+            <tr th:each = "country : ${countries}">
+                <td th:text="${country.country}"></ts>
+                <td th:text="${country.fastestRoute}"></ts>
+                <td th:text="${country.priceForFastest}"></ts>
+                <td th:text="${country.cheapestRoute}"></ts>
+                <td th:text="${country.priceForCheapest}"></ts>
+                <td th:text="${country.airlines.airlineName}"></td>
+                <td sec:authorize="hasAuthority('ADMIN')"><a
+                    th:href="@{/delete/{id}(id=${country.id})}">Delete</a></td>
+            </tr>
+        </tbody>
+    </table>
+    <a href="/add" class="btn btn-primary">Add a new country</a>
+    <br>
+    <br>
+    <form th:action="@{/logout}" method=
+"post">
+<input type="submit" value="Sign Out"/>
+</form>
+</body>
+</html>

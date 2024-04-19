@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Airlines</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+    <h1>Airlines</h1>
+    <table>
+        <tbody>
+            <tr th:each="airline : ${airlines}">
+                <td th:text="${airline.airlineid}"></td>
+                <td th:text="${airline.airlineName}"></td>
+            </tr>
+        </tbody>
+    </table>
+    <a href="/addairlines" class="btn btn-primary">Add a new airline</a>
+</body>
+</html>
