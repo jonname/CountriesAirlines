@@ -28,7 +28,7 @@ public void findByCountryShouldReturnCountry() {
 }
 @Test
 public void createNewCountry() {
-    Country country = new Country("Finland", "Finland", 0, "Finland", 0, (Set<Airlines>) airlinesRep.findByAirlineName("Finnair"));
+    Country country = new Country("Finland", "Finland", 0, "Finland", 0, (List<Airlines>) airlinesRep.findByAirlineName("Finnair"));
     countryRep.save(country);
 assertThat(country.getId()).isNotNull();
 

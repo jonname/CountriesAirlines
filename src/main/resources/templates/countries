@@ -11,12 +11,12 @@ xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
     <table>
         <tbody>
             <tr th:each = "country : ${countries}">
-                <td th:text="${country.country}"></ts>
-                <td th:text="${country.fastestRoute}"></ts>
-                <td th:text="${country.priceForFastest}"></ts>
-                <td th:text="${country.cheapestRoute}"></ts>
-                <td th:text="${country.priceForCheapest}"></ts>
-                <td th:text="${country.airlines.airlineName}"></td>
+                <td th:text="${country.country}"></td>
+                <td th:text="${country.fastestRoute}"></td>
+                <td th:text="${country.priceForFastest}"></td>
+                <td th:text="${country.cheapestRoute}"></td>
+                <td th:text="${country.priceForCheapest}"></td>
+                <td th:each="${country.airlines.airlineName}"></td>
                 <td sec:authorize="hasAuthority('ADMIN')"><a
                     th:href="@{/delete/{id}(id=${country.id})}">Delete</a></td>
             </tr>

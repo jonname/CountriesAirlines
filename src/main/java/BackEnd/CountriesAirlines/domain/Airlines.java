@@ -1,5 +1,6 @@
 package BackEnd.CountriesAirlines.domain;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -30,8 +31,12 @@ private Long id;
 private String airlineid;
 private String airlineName;
 
-@ManyToMany(mappedBy = "airlines")
-private Set<Country> countries = new HashSet<>();
+@ManyToMany(fetch = FetchType.LAZY,
+cascade = {
+    CascadeType.PERSIST,
+    CascadeType.MERGE
+}, mappedBy = "airlines")
+private List<Country> countries = new ArrayList<>();
 
 
 public Airlines(String airlineid, String airlineName) {
@@ -67,7 +72,7 @@ public void setAirlineName(String airlineName) {
 
 @Override
 public String toString() {
-    return "Airlines [airlineid=" + airlineid + ", airlineName=" + airlineName + "]";
+    return airlineName;
 
 }
 }

@@ -22,8 +22,9 @@ private AirlinesRepository airlineRep;
 
 
 		@RequestMapping("/countries")
-	public String countries(Model model) {
+	public String Countries(Model model) {
 	model.addAttribute("countries", countryRep.findAll()); 
+	model.addAttribute("airlines", airlineRep.findAll());
 		return "countries";
 	}
 
@@ -57,7 +58,7 @@ private AirlinesRepository airlineRep;
 		return "hello";
 	}
     
-    @RequestMapping(value="/login")
+    @RequestMapping(value="/login", method = RequestMethod.GET)
 	public String login() {
 		return "login";
 	}    

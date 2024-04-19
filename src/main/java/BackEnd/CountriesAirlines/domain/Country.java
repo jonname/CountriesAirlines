@@ -1,6 +1,7 @@
 package BackEnd.CountriesAirlines.domain;
 
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -33,11 +34,12 @@ public class Country {
     @ManyToMany(fetch = FetchType.EAGER, cascade = { CascadeType.MERGE })
     @JoinTable(
         name = "country_airline", 
-        joinColumns = {@JoinColumn(name = "country_id")}, inverseJoinColumns = { @JoinColumn(name = "airline_id") }
+        joinColumns = {@JoinColumn(name = "country", referencedColumnName = "country")}, 
+        inverseJoinColumns = { @JoinColumn(name = "airlineName", referencedColumnName = "airlineName") }
     )
-    Set<Airlines> airlines = new HashSet<>();
+    private List<Airlines> airlines = new ArrayList<>();
 
-    public Country(String country, String fastestRoute, double priceForFastest, String cheapestRoute, double priceForCheapest, Set<Airlines> airlines) {
+    public Country(String country, String fastestRoute, double priceForFastest, String cheapestRoute, double priceForCheapest, List<Airlines> airlines) {
         this.country = country;
         this.fastestRoute = fastestRoute;
         this.priceForFastest = priceForFastest;

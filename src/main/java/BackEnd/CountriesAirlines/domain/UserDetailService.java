@@ -18,6 +18,8 @@ public interface UserDetailService {
             this.repository = userRepository;
         }
 
+        
+
         @Override
         public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
             User curruser = repository.findByUsername(username);
