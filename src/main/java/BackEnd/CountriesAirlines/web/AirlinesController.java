@@ -23,12 +23,12 @@ public class AirlinesController {
 @Autowired
 private AirlinesRepository airlineRep;
 
-@RequestMapping(value = "/airlines", method=RequestMethod.GET)
+@RequestMapping(value="/airlines")
 public String airlineList(Model model) {
-    List<Airlines> airlinesList = (List<Airlines>) airlineRep.findAll();
-    model.addAttribute("airlines", airlinesList);
-    return "airlines";
+model.addAttribute("airlines", airlineRep.findAll());
+return "airlines";
 }
+
 
 @RequestMapping(value = "/addairlines", method = RequestMethod.GET)
 public String addAirlines(Model model) {

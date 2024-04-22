@@ -21,6 +21,7 @@ public class WebSecurityConfig {
 
     @Bean
 	public SecurityFilterChain configure(HttpSecurity http) throws Exception {
+
         
 		http
 		
@@ -31,13 +32,21 @@ public class WebSecurityConfig {
 			.requestMatchers(AntPathRequestMatcher.antMatcher("/h2-console/**")).permitAll()
 			.anyRequest()
 			.authenticated())
-			.headers(headers -> headers.frameOptions().disable())
+			.formLogin(formlogin -> formlogin
+			.loginPage("/login")
+			.defaultSuccessUrl("/countries", true)
+			.permitAll())
+			.logout(logout -> logout
+			.permitAll())
+
 			.csrf(csrf -> csrf
             .ignoringRequestMatchers(AntPathRequestMatcher.antMatcher("/h2-console/**")));
 			
 		return http.build();
 
 		}
+
+	
 
     @Autowired
 public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
