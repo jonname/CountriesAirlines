@@ -38,17 +38,24 @@ public CommandLineRunner demo(CountryRepository countryRep, AirlinesRepository a
 		Airlines airline1 = new Airlines("FIN", "Finnair");
 		Airlines airline2 = new Airlines("ICE", "Icelandair");
 		Airlines airline3 = new Airlines("LH", "Lufthansa");
+		Airlines airline4 = new Airlines("SAS", "SAS");
+		Airlines airline5 = new Airlines("CA", "Air China");
+		Airlines airline6 = new Airlines("BT", "Air Baltic");
 
 		airlineRep.save(airline1);
 		airlineRep.save(airline2);
 		airlineRep.save(airline3);
+		airlineRep.save(airline4);
+		airlineRep.save(airline5);
+		airlineRep.save(airline6);
 
 		Country country1 = new Country("Iceland", "Direct flight from Helsinki to Reykjavik", 241.0, "Helsinki - Frankfurt - Reykjavik", 183.0, List.of(airline2));
-		Country country2 = new Country("Slovenia", "Helsinki - Ljubljana", 10.0, "jeejoomoi", 20.0, List.of(airline1));
+		Country country2 = new Country("Slovenia", "Direct flight from Helsinki to Ljubljana", 243, "Helsinki - Riga - Ljubljana", 187, List.of(airline1, airline6));
+		Country country3 = new Country("China", "Direct flight from Helsinki to Shanghai", 806, "Helsinki - Copenhagen - Beijing - Shanghai", 514, List.of(airline1, airline4, airline5));
 		
 		countryRep.save(country1);
 		countryRep.save(country2);
-		
+		countryRep.save(country3);
 
 		BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 		
